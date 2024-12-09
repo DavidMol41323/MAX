@@ -275,7 +275,7 @@ INTERRUPT_HANDLER(TIM1_CAP_COM_IRQHandler, 12)
  INTERRUPT_HANDLER(TIM2_UPD_OVF_BRK_IRQHandler, 13)
 {
   TIM2_ClearFlag(TIM2_FLAG_UPDATE);
-  my_time+=0.001;                                   // Vlastní milis
+  my_time+=1;                                   // Vlastní milis
 }
 
 /**

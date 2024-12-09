@@ -106,7 +106,7 @@ int main(void)
     while (1){
         milis_time = milis();
 
-        if((milis_time-time) > 10){ // 4000 = 1 sekudna
+        if((milis_time-time) > 4000){ // 4000 = 1 sekudna
             time = milis_time;
             
             max7219_send(DIGIT0, digit0);
