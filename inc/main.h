@@ -1,6 +1,8 @@
 #ifndef _MAIN_H_
 #define _MAIN_H_ 1
 
+extern uint32_t my_time; //vlastní milis
+
 #define LOW(BAGR) GPIO_WriteLow(BAGR##_PORT, BAGR##_PIN)
 #define HIGH(BAGR) GPIO_WriteHigh(BAGR##_PORT, BAGR##_PIN)
 #define REVERSE(BAGR) GPIO_WriteReverse(BAGR##_PORT, BAGR##_PIN)
@@ -19,12 +21,13 @@
 #define CLK_PIN GPIO_PIN_6
 
 //definování HIGH a LOW
-#define CLK_HIGH GPIO_WriteHigh(CLK_GPIO, CLK_PIN)
-#define CLK_LOW GPIO_WriteLow(CLK_GPIO, CLK_PIN)
-#define DATA_HIGH GPIO_WriteHigh(DIN_GPIO, DATA_PIN)
-#define DATA_LOW GPIO_WriteLow(DIN_GPIO, DATA_PIN)
-#define CS_HIGH GPIO_WriteHigh(CS_GPIO, CS_PIN)
-#define CS_LOW GPIO_WriteLow(CS_GPIO, CS_PIN)
+#define CLK_HIGH GPIO_WriteHigh(CLK_PORT, CLK_PIN)
+#define CLK_LOW  GPIO_WriteLow(CLK_PORT, CLK_PIN)
+#define DATA_HIGH GPIO_WriteHigh(DATA_PORT, DATA_PIN)
+#define DATA_LOW  GPIO_WriteLow(DATA_PORT, DATA_PIN)
+#define CS_HIGH GPIO_WriteHigh(CS_PORT, CS_PIN)
+#define CS_LOW  GPIO_WriteLow(CS_PORT, CS_PIN)
+
 
 // makra adres/příkazů pro čitelnější ovládání MAX7219
 #define NOOP 		 0   // No operation
@@ -82,5 +85,7 @@
 
 // functions
 void init(void);
+void max7219_send(uint8_t adress, uint8_t data);
+
 
 #endif // !_MAIN_H_
